@@ -20,13 +20,16 @@ export class AppComponent implements OnInit {
   public selectedChannel = null;
   public displayedColumns = ['type', 'status', 'image', 'channel', 'date'];
   private form: FormGroup;
+  public title: any;
+  
+
 
   public constructor(private http: HttpClient) {
     this.form = new FormBuilder().group({
       channel: null,
       image: null,
       date: [new Date()],
-      type: null,
+      type: null
     });
   }
 
@@ -36,6 +39,7 @@ export class AppComponent implements OnInit {
       this.selectedChannel = channels[0];
       this.channels = channels;
       this.form.patchValue({ channel: channels[0] });
+      // console.log(channels)
     });
 
     this.http.get('api/schedules').subscribe((scheduleResponse: any) => {
@@ -44,7 +48,16 @@ export class AppComponent implements OnInit {
         end_date: scheduleResponse.end_date,
       };
       this.schedules = scheduleResponse.data;
+      // console.log(this.schedules)
     });
+
+    // this.http.get('https://www.instagram.com/frodobolseirope/?__a=1')
+    // .subscribe (personagens => {this.personagens = personagens ['results'] //O 'results' vem da variavel da API
+    // console.log (personagens)})
+
+    // this.http.get('https://www.instagram.com/frodobolseirope/?__a=1.json')
+    //              .subscribe(data => console.log(data));
+
   }
 
   public selectChannel(channel) {

@@ -38,6 +38,9 @@
     </nav>
   </header>
 
+<br>
+<br>
+
   <div fxFlex fxLayout="row">
     <section fxFlex="500px">
       <div>
@@ -80,7 +83,7 @@
     </section>
 
     <section fxFlex>
-      <button mat-button (click)="schedule()">Agendar</button>
+      
       <mat-tab-group (selectedTabChange)="changeTab($event)">
         <mat-tab label="Novo post">
           <div class="center">
@@ -155,6 +158,9 @@
           </div>
         </mat-tab>
       </mat-tab-group>
+
+      <button mat-button (click)="schedule()">Agendar</button>
+
     </section>
   </div>
 </div>

@@ -116,3 +116,20 @@ img {
 img {
   border: 0;
 }
+
+// NEW STYLE
+
+// ::ng-deep .mat-tab-list {
+//   color: red;
+//   background-color: green;
+// }
+
+::ng-deep .mat-tab-labels {
+  color: gray;
+  background-color:rgb(221, 82, 2)
+}
+
+::ng-deep .mat-tab-label-active {
+  color: white;
+  background-color: black;
+}
