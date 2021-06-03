@@ -82,6 +82,8 @@
       </table>
     </section>
 
+
+
     <section fxFlex>
       
       <mat-tab-group (selectedTabChange)="changeTab($event)">
@@ -103,6 +105,7 @@
                 </button>
               </ng-template>
             </ngx-file-drop>
+
             <div class="upload-table">
               <table class="table">
                 <thead>
@@ -119,8 +122,10 @@
                 </tbody>
               </table>
             </div>
+
           </div>
         </mat-tab>
+
         <mat-tab label="Novo Story">
           <div class="center">
             <ngx-file-drop
@@ -134,11 +139,12 @@
                 let-openFileSelector="openFileSelector"
               >
                 Imagem
-                <button type="button" (click)="openFileSelector()">
+                <button type="button" (click)="openFileSelector()" webkitdirectory>
                   Browse Files
                 </button>
               </ng-template>
             </ngx-file-drop>
+
             <div class="upload-table">
               <table class="table">
                 <thead>
@@ -155,12 +161,25 @@
                 </tbody>
               </table>
             </div>
+
           </div>
         </mat-tab>
       </mat-tab-group>
 
-      <button mat-button (click)="schedule()">Agendar</button>
+      <button mat-button (click)="schedule()" webkitdirectory>Agendar</button>
+
+
+
+
+
+      <img [src]="New_imgUrl" height="100px">
+
+
 
     </section>
   </div>
 </div>
+
+
+
+

@@ -1,7 +1,7 @@
 export const schedules = {
   status: 'success',
   start_date: '2021-02-28T03:00:00+0000',
-  end_date: '2021-03-31T02:59:59+0000',
+  end_date: '2021-06-15T02:59:59+0000',
   data: [
     {
       id: 62512642,
@@ -48,7 +48,7 @@ export const schedules = {
       is_reels: false,
       ig_image_url:
         'https://instagram.fgig4-1.fna.fbcdn.net/v/t51.2885-15/e35/161402654_480555116275064_3989801771446602528_n.jpg?se=7&tp=1&_nc_ht=instagram.fgig4-1.fna.fbcdn.net&_nc_cat=108&_nc_ohc=EI3YOERVO20AX_pSn4L&ccb=7-4&oh=1cc310cfdaf99a2eb29ffb036f478b17&oe=6055E974&ig_cache_key=MjUzMjE0NjczNzQzNzI5Mzk1MA%3D%3D.2-ccb7-4',
-      type: 'history',
+      type: 'story',
       media_type: 'photo',
       image: {
         id: 125446429,
@@ -80,7 +80,7 @@ export const schedules = {
       is_reels: false,
       ig_image_url:
         'https://instagram.fmcz4-1.fna.fbcdn.net/v/t51.2885-15/e35/p360x360/160901975_778092973141985_5239028039275833209_n.jpg?tp=1&_nc_ht=instagram.fmcz4-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=13HdrS7zcvsAX-TIsFX&oh=6f962fb7a1a1a6336863adcb63d4dd07&oe=6053AFCA&ig_cache_key=MjUzMDk1NzEzNjg2NTc3NDc5Mw%3D%3D.2',
-      type: 'history',
+      type: 'story',
       media_type: 'photo',
       image: {
         id: 125306272,
@@ -112,7 +112,7 @@ export const schedules = {
       is_reels: false,
       ig_image_url:
         'https://instagram.fthe1-1.fna.fbcdn.net/v/t51.2885-15/e35/161738459_275447074090924_2665021838551782560_n.jpg?se=7&tp=1&_nc_ht=instagram.fthe1-1.fna.fbcdn.net&_nc_cat=104&_nc_ohc=8DN_-fA9oMIAX-LzyR6&oh=b1d468605f8fa3105a4dc23fde5f778c&oe=6053B236&ig_cache_key=MjUzMDkyNzE2NjY5Mjk5MjIyMA%3D%3D.2',
-      type: 'history',
+      type: 'story',
       media_type: 'photo',
       image: {
         id: 125306124,

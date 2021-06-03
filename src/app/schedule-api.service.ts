@@ -6,17 +6,25 @@ import {
 } from 'angular-in-memory-web-api';
 import { schedules, channels } from './fake-api';
 
+
+import { Input } from '@angular/core';
+
+
 export class ScheduleAPIService implements InMemoryDbService {
   private schedules: any = [];
+  
+  private imgUrl: any = [];
+  
+
 
   constructor() {
     this.schedules = schedules;
   }
-
+  
   createDb() {
     return {
       schedules: this.schedules,
-      channels,
+      channels
     };
   }
 
@@ -35,6 +43,7 @@ export class ScheduleAPIService implements InMemoryDbService {
     const body = reqInfo.utils.getJsonBody(reqInfo.req);
 
     console.log({ body });
+    
     this.schedules.data.push(scheduleFactory(body));
 
     const options: ResponseOptions = {
@@ -50,6 +59,7 @@ export class ScheduleAPIService implements InMemoryDbService {
 
 export const scheduleFactory = (data) => ({
   id: Math.floor(Math.random() * 1000),
+  NewURL: data.NewURL,
   created_at: new Date(),
   status: 'waiting',
   now: false,
@@ -67,8 +77,8 @@ export const scheduleFactory = (data) => ({
     id: Math.floor(Math.random() * 1000),
     filename: data.image.name,
     is_album: false,
-    url:
-      'https://media.postgrain.com/uploads/images/2021/03/30/46519/9dbfcf76d9e30edbae8faef13f2ac700236ae25e.jpg',
+    url: data.NewURL, //Trocado para receber imagens novas e não só a mesma que estava vindo por default
+      // 'https://media.postgrain.com/uploads/images/2021/03/30/46519/9dbfcf76d9e30edbae8faef13f2ac700236ae25e.jpg',
     type: null,
   },
   channel: {

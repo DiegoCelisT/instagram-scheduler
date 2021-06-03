@@ -24,12 +24,17 @@ export class AppComponent implements OnInit {
   
 
 
+  public New_imgUrl: any;
+
+  
+
   public constructor(private http: HttpClient) {
     this.form = new FormBuilder().group({
       channel: null,
       image: null,
       date: [new Date()],
-      type: null
+      type: null,
+      NewURL: this.New_imgUrl
     });
   }
 
@@ -51,13 +56,6 @@ export class AppComponent implements OnInit {
       // console.log(this.schedules)
     });
 
-    // this.http.get('https://www.instagram.com/frodobolseirope/?__a=1')
-    // .subscribe (personagens => {this.personagens = personagens ['results'] //O 'results' vem da variavel da API
-    // console.log (personagens)})
-
-    // this.http.get('https://www.instagram.com/frodobolseirope/?__a=1.json')
-    //              .subscribe(data => console.log(data));
-
   }
 
   public selectChannel(channel) {
@@ -71,6 +69,7 @@ export class AppComponent implements OnInit {
       .post('api/schedules', this.form.value, { responseType: 'json' })
       .subscribe((data) => {
         this.form.reset();
+       
         this.files = [];
         this.http.get('api/schedules').subscribe((scheduleResponse: any) => {
           this.schedulePeriod = {
@@ -78,6 +77,8 @@ export class AppComponent implements OnInit {
             end_date: scheduleResponse.end_date,
           };
           this.schedules = scheduleResponse.data;
+          
+          // console.log(this.New_imgUrl)
         });
       });
   }
@@ -87,12 +88,35 @@ export class AppComponent implements OnInit {
     for (const droppedFile of files) {
       if (droppedFile.fileEntry.isFile) {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
-        fileEntry.file((file: File) => {
+        fileEntry.file((file: File,) => {
           this.form.patchValue({ image: file });
+          
+          
+
+          var reader = new FileReader(); // **for reading file**
+          for(const droppedFile of files){
+            // Is it a file?
+            if(droppedFile.fileEntry.isFile){
+              let fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
+              fileEntry.file((file:File) => {
+                // console.log(droppedFile.relativePath, file);
+                
+                reader.readAsDataURL(file);
+                  reader.onload = () => {
+                      this.form.patchValue({ NewURL: reader.result });
+                       this.New_imgUrl = reader.result;
+                  };
+                })}}
+
+                
+          
+
+
         });
       } else {
         const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
-        console.log(droppedFile.relativePath, fileEntry);
+        // console.log(droppedFile.relativePath, fileEntry);
+        
       }
     }
   }
@@ -109,3 +133,5 @@ export class AppComponent implements OnInit {
     this.form.patchValue({ type: $event.index === 0 ? 'feed' : 'story' });
   }
 }
+
+
