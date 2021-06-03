@@ -32,9 +32,9 @@ export class AppComponent implements OnInit {
     this.form = new FormBuilder().group({
       channel: null,
       image: null,
-      date: [new Date()],
+      date: null,
       type: null,
-      NewURL: this.New_imgUrl
+      NewURL: null
     });
   }
 
@@ -68,8 +68,10 @@ export class AppComponent implements OnInit {
     this.http
       .post('api/schedules', this.form.value, { responseType: 'json' })
       .subscribe((data) => {
-        this.form.reset();
-       
+        // this.form.reset(); //retiro isso para evitar que se atualize o formulario, pois estava criando conflito quando se faziam agendamentos depois do primeiro.
+               
+        this.New_imgUrl = "" //Para resetar a imagem preview
+
         this.files = [];
         this.http.get('api/schedules').subscribe((scheduleResponse: any) => {
           this.schedulePeriod = {
@@ -78,9 +80,9 @@ export class AppComponent implements OnInit {
           };
           this.schedules = scheduleResponse.data;
           
-          // console.log(this.New_imgUrl)
         });
       });
+      
   }
 
   public dropped(files: NgxFileDropEntry[]) {
@@ -91,8 +93,8 @@ export class AppComponent implements OnInit {
         fileEntry.file((file: File,) => {
           this.form.patchValue({ image: file });
           
+          this.form.patchValue({ date: [new Date()] }); 
           
-
           var reader = new FileReader(); // **for reading file**
           for(const droppedFile of files){
             // Is it a file?
@@ -103,19 +105,20 @@ export class AppComponent implements OnInit {
                 
                 reader.readAsDataURL(file);
                   reader.onload = () => {
-                      this.form.patchValue({ NewURL: reader.result });
-                       this.New_imgUrl = reader.result;
+                      this.form.patchValue({ NewURL: reader.result }); //Para enviar a imagem nova até a tabela
+                      this.New_imgUrl = reader.result; //Para previsualizar
+                      
                   };
                 })}}
 
                 
           
 
-
         });
       } else {
         const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
         // console.log(droppedFile.relativePath, fileEntry);
+        
         
       }
     }

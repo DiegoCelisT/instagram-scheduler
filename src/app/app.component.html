@@ -139,7 +139,7 @@
                 let-openFileSelector="openFileSelector"
               >
                 Imagem
-                <button type="button" (click)="openFileSelector()" webkitdirectory>
+                <button type="button" (click)="openFileSelector()">
                   Browse Files
                 </button>
               </ng-template>
@@ -160,19 +160,26 @@
                   </tr>
                 </tbody>
               </table>
+              
             </div>
 
           </div>
         </mat-tab>
       </mat-tab-group>
 
-      <button mat-button (click)="schedule()" webkitdirectory>Agendar</button>
 
 
 
 
+     
 
-      <img [src]="New_imgUrl" height="100px">
+      <button mat-button (click)="schedule()">Agendar</button>
+
+
+
+<!-- Previsualização de imagem: -->
+<img [src]="New_imgUrl" height="100px">
+      
 
 
 

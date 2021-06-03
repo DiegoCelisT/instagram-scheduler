@@ -7,9 +7,6 @@ import {
 import { schedules, channels } from './fake-api';
 
 
-import { Input } from '@angular/core';
-
-
 export class ScheduleAPIService implements InMemoryDbService {
   private schedules: any = [];
   
@@ -30,7 +27,7 @@ export class ScheduleAPIService implements InMemoryDbService {
 
   post(reqInfo: RequestInfo) {
     const collectionName = reqInfo.collectionName;
-    console.log('post::', collectionName);
+    // console.log('post::', collectionName);
 
     if (collectionName === 'schedules') {
       return this.createSchedule(reqInfo);
@@ -42,7 +39,7 @@ export class ScheduleAPIService implements InMemoryDbService {
   private createSchedule(reqInfo) {
     const body = reqInfo.utils.getJsonBody(reqInfo.req);
 
-    console.log({ body });
+    // console.log({ body });
     
     this.schedules.data.push(scheduleFactory(body));
 
