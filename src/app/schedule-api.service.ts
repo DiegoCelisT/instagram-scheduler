@@ -10,10 +10,6 @@ import { schedules, channels } from './fake-api';
 export class ScheduleAPIService implements InMemoryDbService {
   private schedules: any = [];
   
-  private imgUrl: any = [];
-  
-
-
   constructor() {
     this.schedules = schedules;
   }
@@ -38,9 +34,7 @@ export class ScheduleAPIService implements InMemoryDbService {
 
   private createSchedule(reqInfo) {
     const body = reqInfo.utils.getJsonBody(reqInfo.req);
-
     // console.log({ body });
-    
     this.schedules.data.push(scheduleFactory(body));
 
     const options: ResponseOptions = {
@@ -55,7 +49,7 @@ export class ScheduleAPIService implements InMemoryDbService {
 }
 
 export const scheduleFactory = (data) => ({
-  id: Math.floor(Math.random() * 1000),
+  id: Math.floor(Math.random() * 100000000),
   NewURL: data.NewURL,
   created_at: new Date(),
   status: 'waiting',
@@ -71,7 +65,7 @@ export const scheduleFactory = (data) => ({
   type: data.type,
   media_type: 'photo',
   image: {
-    id: Math.floor(Math.random() * 1000),
+    id: Math.floor(Math.random() * 100000000),
     filename: data.image.name,
     is_album: false,
     url: data.NewURL, //Trocado para receber imagens novas e não só a mesma que estava vindo por default

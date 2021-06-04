@@ -21,12 +21,7 @@ export class AppComponent implements OnInit {
   public displayedColumns = ['type', 'status', 'image', 'channel', 'date'];
   private form: FormGroup;
   public title: any;
-  
-
-
   public New_imgUrl: any;
-
-  
 
   public constructor(private http: HttpClient) {
     this.form = new FormBuilder().group({
@@ -54,8 +49,19 @@ export class AppComponent implements OnInit {
       };
       this.schedules = scheduleResponse.data;
       // console.log(this.schedules)
-    });
 
+      //Para ordenar por data:
+      this.schedules.sort(function(a, b) {
+        if (a.date > b.date) {
+          return -1;
+        }
+        if (a.date < b.date) {
+          return 1;
+        }
+        return 0;
+
+      });
+    });
   }
 
   public selectChannel(channel) {
@@ -68,7 +74,7 @@ export class AppComponent implements OnInit {
     this.http
       .post('api/schedules', this.form.value, { responseType: 'json' })
       .subscribe((data) => {
-        // this.form.reset(); //retiro isso para evitar que se atualize o formulario, pois estava criando conflito quando se faziam agendamentos depois do primeiro.
+        // this.form.reset(); //retiro isso para evitar que se atualize o formulario, pois estava criando conflitos quando se faziam agendamentos depois do primeiro.
                
         this.New_imgUrl = "" //Para resetar a imagem preview
 
@@ -78,8 +84,20 @@ export class AppComponent implements OnInit {
             start_date: scheduleResponse.start_date,
             end_date: scheduleResponse.end_date,
           };
+
           this.schedules = scheduleResponse.data;
-          
+   
+          //Para manter a ordem por data:
+          this.schedules.sort(function(a, b) {
+            if (a.date > b.date) {
+              return -1;
+            }
+            if (a.date < b.date) {
+              return 1;
+            }
+            return 0;
+          });
+
         });
       });
       
@@ -93,7 +111,7 @@ export class AppComponent implements OnInit {
         fileEntry.file((file: File,) => {
           this.form.patchValue({ image: file });
           
-          this.form.patchValue({ date: [new Date()] }); 
+          this.form.patchValue({ date: new Date() }); //Data atualizada ao dia em que é feito o upload do arquivo
           
           var reader = new FileReader(); // **for reading file**
           for(const droppedFile of files){
@@ -102,24 +120,18 @@ export class AppComponent implements OnInit {
               let fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
               fileEntry.file((file:File) => {
                 // console.log(droppedFile.relativePath, file);
-                
                 reader.readAsDataURL(file);
                   reader.onload = () => {
                       this.form.patchValue({ NewURL: reader.result }); //Para enviar a imagem nova até a tabela
                       this.New_imgUrl = reader.result; //Para previsualizar
-                      
                   };
-                })}}
-
-                
-          
-
+                })
+              }
+            }
         });
       } else {
         const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
         // console.log(droppedFile.relativePath, fileEntry);
-        
-        
       }
     }
   }
