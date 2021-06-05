@@ -1,17 +1,47 @@
-.page-header {
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+*, :after, :before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   border: 0;
   margin: 0;
   padding: 0;
-  height: 53px;
+}
+
+.page-header {
+  max-width: 100%;
   min-width: 320px;
-  background: #fff;
+  background: rgb(30, 150, 250); //Postgrain color palette
+  justify-content: space-between;
+}
+
+.page-header section{
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+figure {
+  margin: 1em 40px;
+  display: flex;
+  flex-direction: row;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin: 25px 40px 25px 40px;
+}
+
+figcaption{
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color:rgb(232, 244, 254)
 }
 
 .navbar.navbar-default {
-    left: 0;
-    top: 0;
-    position: fixed;
-    width: 100%;
     z-index: 998;
 }
 
@@ -19,15 +49,12 @@
   background-color: #fff;
   height: 53px;
   border: 0;
-  border-bottom: 1px solid #dbe1e8;
-  position: relative;
-  min-height: 50px;
-  margin-bottom: 20px;
+  border-bottom: px solid #dbe1e8;
   border: 1px solid transparent;
 }
 
 .navbar-default {
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   border-color: #e7e7e7;
 }
 
@@ -42,44 +69,13 @@
   float: left;
   margin: 0;
 }
-.navbar-nav {
-  margin: 7.5px -15px;
-}
-.nav {
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
-}
 
 .navbar-profiles-item-wrap {
   display: flex;
 }
 
-
 .navbar-profiles-item, .navbar-profiles .profile-thumbnail {
-  margin-right: 5px;
   cursor: pointer;
-}
-figure {
-  margin: 0;
-}
-figure {
-  margin: 1em 40px;
-}
-article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
-  display: block;
-}
-*, :after, :before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-figure {
-  display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 40px;
-  margin-inline-end: 40px;
 }
 
 .profile-thumbnail-avatar.small {
@@ -105,31 +101,128 @@ figure {
   height: 29px;
 }
 .profile-thumbnail-avatar>img {
-  width: 64px;
-  height: 64px;
-  border: 1px solid #d2d0d0;
+  width: 75px;
+  height: 75px;
+  border: 3px solid #d2d0d0;
   border-radius: 50%;
 }
 img {
   vertical-align: middle;
-}
-img {
   border: 0;
 }
 
-// NEW STYLE
+nav{
+  list-style: none;
+  justify-content: flex-end;
+}
 
-// ::ng-deep .mat-tab-list {
-//   color: red;
-//   background-color: green;
-// }
+.channels{
+  display: flex;
+  flex-direction: column!important;
+  flex-wrap: nowrap;
+}
+
+h2{
+  margin: 0px;
+  padding-top: 15px;
+  text-align: center;
+  font-size: 30px;
+  color:rgb(232, 244, 254)
+}
+
+
+
+main{
+  justify-content: space-around;
+}
+
+#scheduleTable{
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+}
+
+#scheduleTable>h3{
+  font-size: 20px;
+  text-align: center;
+}
+
+table, th, td{
+  padding: 0px 10px 0px 10px!important;
+  margin: 0px;
+  vertical-align: middle;
+  text-align: center;
+  color:black;
+}
+
+th{
+  background-color: rgb(30, 150, 250);
+  text-align: center!important;
+  font-size: 16px;
+  color: rgb(232, 244, 254);
+}
+
+span{
+  padding: 5px;
+}
+
+#updateForm{
+  width: 400px;
+}
+
+.center{
+  overflow-y:hidden; //Para tirar o scroll vertical que chega com bootstap
+}
 
 ::ng-deep .mat-tab-labels {
-  color: gray;
-  background-color:rgb(221, 82, 2)
+  color: rgb(255, 255, 255);
+  background-color:rgb(120, 192, 252);
+  display: flex;
+  justify-content: center;
+  margin: 0px 40px 0px 40px;
 }
 
 ::ng-deep .mat-tab-label-active {
   color: white;
-  background-color: black;
+  background-color: rgb(0, 53, 102);
+  
+}
+
+::ng-deep .mat-tab-label, .mat-tab-link {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.updater{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h4{
+  margin: 0px;
+}
+
+strong{
+  display:inline-block;
+  width: 300px;
+  overflow-wrap: break-word;
+}
+
+#imagePreview{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#imagePreview>img{
+  width: 150px;
+  justify-self: center;
+}
+
+.btn-primary{
+  padding: 7px;
+  margin: 10px 0px 5px 0px;
 }

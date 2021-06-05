@@ -20,8 +20,10 @@ export class AppComponent implements OnInit {
   public selectedChannel = null;
   public displayedColumns = ['type', 'status', 'image', 'channel', 'date'];
   private form: FormGroup;
-  public title: any;
+  public title: any; //revisar-trocar para "ngforms" para passar o teste predeterminado de karma
   public New_imgUrl: any;
+
+  submit:boolean = false;
 
   public constructor(private http: HttpClient) {
     this.form = new FormBuilder().group({
@@ -74,9 +76,9 @@ export class AppComponent implements OnInit {
     this.http
       .post('api/schedules', this.form.value, { responseType: 'json' })
       .subscribe((data) => {
-        // this.form.reset(); //retiro isso para evitar que se atualize o formulario, pois estava criando conflitos quando se faziam agendamentos depois do primeiro.
-               
+        // this.form.reset(); //retiro isso para evitar que se atualize o formulario, pois ao resetar criava conflitos (empty form)
         this.New_imgUrl = "" //Para resetar a imagem preview
+        this.submit = false //Ocultar o botão de submit
 
         this.files = [];
         this.http.get('api/schedules').subscribe((scheduleResponse: any) => {
@@ -97,10 +99,8 @@ export class AppComponent implements OnInit {
             }
             return 0;
           });
-
         });
       });
-      
   }
 
   public dropped(files: NgxFileDropEntry[]) {
@@ -110,9 +110,7 @@ export class AppComponent implements OnInit {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
         fileEntry.file((file: File,) => {
           this.form.patchValue({ image: file });
-          
           this.form.patchValue({ date: new Date() }); //Data atualizada ao dia em que é feito o upload do arquivo
-          
           var reader = new FileReader(); // **for reading file**
           for(const droppedFile of files){
             // Is it a file?
@@ -124,6 +122,7 @@ export class AppComponent implements OnInit {
                   reader.onload = () => {
                       this.form.patchValue({ NewURL: reader.result }); //Para enviar a imagem nova até a tabela
                       this.New_imgUrl = reader.result; //Para previsualizar
+                      this.submit = true // Mostrar botão de submit
                   };
                 })
               }
@@ -137,11 +136,11 @@ export class AppComponent implements OnInit {
   }
 
   public fileOver(event) {
-    console.log(event);
+    // console.log(event);
   }
 
   public fileLeave(event) {
-    console.log(event);
+    // console.log(event);
   }
 
   public changeTab($event) {
