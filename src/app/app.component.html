@@ -108,23 +108,6 @@
                   </div>
               </ng-template>
             </ngx-file-drop>
-
-            <div class="upload-table">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody class="upload-name-style">
-                  <tr *ngFor="let item of files; let i = index">
-                    <td>
-                      <strong>{{ item.relativePath }}</strong>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
           </div>
         </mat-tab>
 
@@ -150,32 +133,29 @@
                 </div>
               </ng-template>
             </ngx-file-drop>
-
-            <div class="upload-table">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody class="upload-name-style">
-                  <tr *ngFor="let item of files; let i = index">
-                    <td>
-                      <strong>{{ item.relativePath }}</strong>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
           </div>
         </mat-tab>
       </mat-tab-group>
 
-      <div id="imagePreview">
+      <div id="imagePreview" *ngIf="submit">
+        <strong >{{ imageName }}</strong>
         <img [src]="New_imgUrl">
-        <button *ngIf="submit" mat-button (click)="schedule()" class="btn btn-primary">Schedule</button>
+        <div class="form-group row" id="calendar">
+          <label for="example-date-input">Choose date</label>
+          <div class="col-10">
+            <input class="form-control" type="date" (change)="dateInput($event)" value="{{startDate | date:'yyyy-MM-dd'}}" id="date-input">
+          </div>
+        </div>
+        <div id="buttons">
+          <button mat-button (click)="schedule()" class="btn btn-success">Schedule</button>
+          <button mat-button (click)="cancel()" class="btn btn-danger">Cancel</button>
+        </div>
       </div>
       
     </section>
   </main>
 </div>
+
+<footer>
+  <h5>Postgrain challenge by DiegoCelisT</h5>
+</footer>

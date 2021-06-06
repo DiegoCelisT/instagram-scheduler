@@ -2,8 +2,9 @@ import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+   
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
@@ -21,6 +22,13 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual('nforms');
   });
+
+  // it('should render title in a h2 tag', () => {
+  //   const fixture = TestBed.createComponent(AppComponent);
+  //   fixture.detectChanges();
+  //   const compiled = fixture.debugElement.nativeElement;
+  //   expect(compiled.querySelector('h2').textContent).toContain('Channels');
+  // });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);

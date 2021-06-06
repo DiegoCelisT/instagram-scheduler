@@ -12,6 +12,8 @@ import {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
+
+
 export class AppComponent implements OnInit {
   public files: NgxFileDropEntry[] = [];
   public channels: any = [];
@@ -20,11 +22,13 @@ export class AppComponent implements OnInit {
   public selectedChannel = null;
   public displayedColumns = ['type', 'status', 'image', 'channel', 'date'];
   private form: FormGroup;
-  public title: any; //revisar-trocar para "ngforms" para passar o teste predeterminado de karma
+  public title = 'nforms';
   public New_imgUrl: any;
+  public submit:boolean = false;
+  public imageName:string
+  public startDate = new Date()
 
-  submit:boolean = false;
-
+  
   public constructor(private http: HttpClient) {
     this.form = new FormBuilder().group({
       channel: null,
@@ -55,13 +59,12 @@ export class AppComponent implements OnInit {
       //Para ordenar por data:
       this.schedules.sort(function(a, b) {
         if (a.date > b.date) {
-          return -1;
-        }
-        if (a.date < b.date) {
           return 1;
         }
+        if (a.date < b.date) {
+          return -1;
+        }
         return 0;
-
       });
     });
   }
@@ -92,10 +95,10 @@ export class AppComponent implements OnInit {
           //Para manter a ordem por data:
           this.schedules.sort(function(a, b) {
             if (a.date > b.date) {
-              return -1;
+              return 1;
             }
             if (a.date < b.date) {
-              return 1;
+              return -1;
             }
             return 0;
           });
@@ -105,34 +108,35 @@ export class AppComponent implements OnInit {
 
   public dropped(files: NgxFileDropEntry[]) {
     this.files = files;
-    for (const droppedFile of files) {
-      if (droppedFile.fileEntry.isFile) {
-        const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
+      if (files[0].fileEntry.isFile) {  //Só aceitar 1 arquivo por vez
+        const fileEntry = files[0].fileEntry as FileSystemFileEntry;
         fileEntry.file((file: File,) => {
-          this.form.patchValue({ image: file });
-          this.form.patchValue({ date: new Date() }); //Data atualizada ao dia em que é feito o upload do arquivo
-          var reader = new FileReader(); // **for reading file**
-          for(const droppedFile of files){
-            // Is it a file?
-            if(droppedFile.fileEntry.isFile){
-              let fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
-              fileEntry.file((file:File) => {
-                // console.log(droppedFile.relativePath, file);
-                reader.readAsDataURL(file);
-                  reader.onload = () => {
-                      this.form.patchValue({ NewURL: reader.result }); //Para enviar a imagem nova até a tabela
-                      this.New_imgUrl = reader.result; //Para previsualizar
-                      this.submit = true // Mostrar botão de submit
-                  };
-                })
-              }
-            }
-        });
+          if (file.type.includes('image')) { //Para permitir somente imagens
+            this.form.patchValue({ image: file });
+            this.form.patchValue({ date: new Date() }); //Data por default, atualizada ao dia em que é feito o upload do arquivo
+            var reader = new FileReader(); // Para ler o arquivo
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                this.form.patchValue({ NewURL: reader.result }); //Para enviar a imagem nova até a tabela
+                this.New_imgUrl = reader.result; //Para previsualizar
+                this.submit = true // Mostrar botão de submit
+                this.imageName = this.form.value.image.name
+                // console.log (this.form.value.image.name)
+              };
+            };
+          });
       } else {
-        const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
+        const fileEntry = files[0].fileEntry as FileSystemDirectoryEntry;
         // console.log(droppedFile.relativePath, fileEntry);
       }
-    }
+  }
+
+  public dateInput($event){
+    this.form.patchValue({ date: $event.target.value });
+  }
+
+  public cancel(){
+    this.submit = false;
   }
 
   public fileOver(event) {
@@ -146,6 +150,7 @@ export class AppComponent implements OnInit {
   public changeTab($event) {
     this.form.patchValue({ type: $event.index === 0 ? 'feed' : 'story' });
   }
+
 }
 
 
