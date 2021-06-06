@@ -35,7 +35,8 @@ export class AppComponent implements OnInit {
       image: null,
       date: null,
       type: null,
-      NewURL: null
+      NewURL: null,
+      status: null
     });
   }
 
@@ -74,7 +75,69 @@ export class AppComponent implements OnInit {
     this.form.patchValue({ channel });
   }
 
+  public dropped(files: NgxFileDropEntry[]) {
+    this.files = files;
+      if (files[0].fileEntry.isFile) {  //Só aceitar 1 arquivo por vez
+        const fileEntry = files[0].fileEntry as FileSystemFileEntry;
+        fileEntry.file((file: File,) => {
+          if (file.type.includes('image')) { //Para permitir somente imagens
+            this.form.patchValue({ image: file });
+            this.form.patchValue({ date: new Date() }); //Data por default, atualizada ao dia em que é feito o upload do arquivo
+            var reader = new FileReader(); // Para ler o arquivo
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                this.form.patchValue({ NewURL: reader.result }); //Para enviar a imagem nova até a tabela
+                this.New_imgUrl = reader.result; //Para previsualizar
+                this.submit = true // Mostrar botão de submit
+                this.imageName = this.form.value.image.name
+                // console.log (this.form.value.image.name)
+              };
+            };
+          });
+      } else {
+        const fileEntry = files[0].fileEntry as FileSystemDirectoryEntry;
+        // console.log(droppedFile.relativePath, fileEntry);
+      }
+  }
+
+  public dateInput($event){
+    this.form.patchValue({ date: $event.target.value });
+  }
+
+  public send(){
+    this.form.patchValue({ status: "sent" });
+    if (!this.form.valid) return; // TODO: give feedback
+    this.http
+      .post('api/schedules', this.form.value, { responseType: 'json' })
+      .subscribe((data) => {
+        // this.form.reset(); //retiro isso para evitar que se atualize o formulario, pois ao resetar criava conflitos (empty form)
+        this.New_imgUrl = "" //Para resetar a imagem preview
+        this.submit = false //Ocultar o botão de submit
+        this.files = [];
+        this.http.get('api/schedules').subscribe((scheduleResponse: any) => {
+          this.schedulePeriod = {
+            start_date: scheduleResponse.start_date,
+            end_date: scheduleResponse.end_date,
+          };
+
+          this.schedules = scheduleResponse.data;
+   
+          //Para manter a ordem por data:
+          this.schedules.sort(function(a, b) {
+            if (a.date > b.date) {
+              return 1;
+            }
+            if (a.date < b.date) {
+              return -1;
+            }
+            return 0;
+          });
+        });
+      });
+  }
+
   public schedule() {
+    this.form.patchValue({ status: "waiting" });
     if (!this.form.valid) return; // TODO: give feedback
     this.http
       .post('api/schedules', this.form.value, { responseType: 'json' })
@@ -104,35 +167,6 @@ export class AppComponent implements OnInit {
           });
         });
       });
-  }
-
-  public dropped(files: NgxFileDropEntry[]) {
-    this.files = files;
-      if (files[0].fileEntry.isFile) {  //Só aceitar 1 arquivo por vez
-        const fileEntry = files[0].fileEntry as FileSystemFileEntry;
-        fileEntry.file((file: File,) => {
-          if (file.type.includes('image')) { //Para permitir somente imagens
-            this.form.patchValue({ image: file });
-            this.form.patchValue({ date: new Date() }); //Data por default, atualizada ao dia em que é feito o upload do arquivo
-            var reader = new FileReader(); // Para ler o arquivo
-            reader.readAsDataURL(file);
-            reader.onload = () => {
-                this.form.patchValue({ NewURL: reader.result }); //Para enviar a imagem nova até a tabela
-                this.New_imgUrl = reader.result; //Para previsualizar
-                this.submit = true // Mostrar botão de submit
-                this.imageName = this.form.value.image.name
-                // console.log (this.form.value.image.name)
-              };
-            };
-          });
-      } else {
-        const fileEntry = files[0].fileEntry as FileSystemDirectoryEntry;
-        // console.log(droppedFile.relativePath, fileEntry);
-      }
-  }
-
-  public dateInput($event){
-    this.form.patchValue({ date: $event.target.value });
   }
 
   public cancel(){

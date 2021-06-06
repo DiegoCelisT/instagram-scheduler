@@ -52,7 +52,7 @@ export const scheduleFactory = (data) => ({
   id: Math.floor(Math.random() * 100000000),
   NewURL: data.NewURL,
   created_at: new Date(),
-  status: 'waiting',
+  status: data.status,
   now: false,
   date: data.date,
   caption: 'Lorem ipsom',
