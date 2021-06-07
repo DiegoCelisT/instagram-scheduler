@@ -108,11 +108,11 @@ figcaption{
   border: 3px solid #d2d0d0;
   border-radius: 50%;
 }
+
 img {
   vertical-align: middle;
   border: 0;
 }
-
 
 .profile-thumbnail-avatar>img:hover{
   opacity: 0.8;
@@ -155,15 +155,13 @@ main{
 #scheduleTable{
   justify-content: center;
   align-items: center;
-  justify-items: center;
-  align-content: center;
   margin-bottom: 5px;  
 }
 
 #scheduleTable>h3{
   font-size: 20px;
   text-align: center;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 table, th, td{
@@ -292,8 +290,6 @@ h5{
 }
 
 
-
-
 @media (max-width: 950px){
 
   main {
@@ -330,6 +326,11 @@ h5{
 
   .profile-thumbnail-avatar{
     margin: 10px;
+  }
+
+  #scheduleTable>h3{
+    margin-top: 6px;
+    margin-bottom: 6px;
   }
 
   .collapse{
@@ -378,11 +379,69 @@ h5{
 
 }
 
-@media (max-width: 600px){
+@media (max-width: 595px){
 
-  // main{
-  //   background-color: chartreuse;
-  // }
+  figure{
+    flex-direction: column;
+    margin-left: 40px;
+    max-width: 100%;
+  }
+
+  figcaption{
+    margin-left: 0px;
+    margin-top: 15px;
+    font-size: 5vw;
+    line-height: 6vw;
+  }
+
+  #scheduleTable{
+    max-width: 98%;
+
+  }
+  #scheduleTable>h3{
+    font-size: 4.5vw;
+  }
+
+  table, th, td{
+    padding: 0px!important;
+  }
+
+  th{
+    font-size: 4vw;
+  }
+  
+  span{
+    padding: 1vw;
+    font-size: 4vw;
+  }
+
+  #updateForm{
+    width: 310px;
+  }
+  strong{
+    width: 310px;
+  }
+
+  ::ng-deep .mat-tab-labels {
+    margin: 0px 18px 0px 18px;
+  }
+   
+  ::ng-deep .mat-tab-label, .mat-tab-link {
+    font-size: 20px;
+    font-weight: 500;
+  }
+   
+  h4{
+    margin: 0px;
+  }
+    
+  #imagePreview>img{
+    width: 300px
+  }
+
+  #buttons{
+    width: 95%;
+  }
 
 
   footer{

@@ -1,9 +1,7 @@
-
-
-
 <div fxLayout="column" fxLayoutGap="40px">
   
   <header class="page-header" fxLayout="row">
+    
     <section>
       <div>
         <figure class="profile-thumbnail">
@@ -29,10 +27,6 @@
       </div>
     </section>
 
-
-    
-
-
     <section class="channels">
       <h2>Channels</h2>
 
@@ -44,7 +38,6 @@
       <div class="menu-container" id="menu"></div>
       
       <nav class="nav navbar-nav navbar-profiles" fxFlex [ngClass]="{ 'collapse': isCollapse }">
-
         <div class="navbar-profiles-item-wrap">
           <a *ngFor="let channel of channels" (click)="selectChannel(channel)">
             <figure class="profile-thumbnail">
@@ -55,20 +48,9 @@
           </a>
         </div>
       </nav>
-      
     </section>
 
-
-
-
-
   </header>
-
-
-
-
-  
-
 
   <main fxFlex fxLayout="row">
 
