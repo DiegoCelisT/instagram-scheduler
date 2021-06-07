@@ -1,3 +1,6 @@
+
+
+
 <div fxLayout="column" fxLayoutGap="40px">
   
   <header class="page-header" fxLayout="row">
@@ -26,9 +29,22 @@
       </div>
     </section>
 
+
+    
+
+
     <section class="channels">
       <h2>Channels</h2>
-      <nav class="nav navbar-nav navbar-profiles" fxFlex>
+
+      <div class="menu" id="menu" (click)="toggleState()">
+        <div class="line-1"></div>
+        <div class="line-2"></div>
+        <div class="line-3"></div>
+      </div>
+      <div class="menu-container" id="menu"></div>
+      
+      <nav class="nav navbar-nav navbar-profiles" fxFlex [ngClass]="{ 'collapse': isCollapse }">
+
         <div class="navbar-profiles-item-wrap">
           <a *ngFor="let channel of channels" (click)="selectChannel(channel)">
             <figure class="profile-thumbnail">
@@ -39,8 +55,20 @@
           </a>
         </div>
       </nav>
+      
     </section>
+
+
+
+
+
   </header>
+
+
+
+
+  
+
 
   <main fxFlex fxLayout="row">
 
@@ -147,8 +175,8 @@
           </div>
         </div>
         <div id="buttons">
-          <button mat-button (click)="send()" class="btn btn-success">Send</button>
-          <button mat-button (click)="schedule()" class="btn btn-primary">Schedule</button>
+          <button mat-button (click)="schedule('sent')" class="btn btn-success">Send</button>
+          <button mat-button (click)="schedule('waiting')" class="btn btn-primary">Schedule</button>
           <button mat-button (click)="cancel()" class="btn btn-danger">Cancel</button>
         </div>
       </div>

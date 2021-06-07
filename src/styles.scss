@@ -8,3 +8,20 @@ body {
     background-image: url("./assets/background-postgrain-inspired.png");
     background-size: 100%;
 }
+
+@media (max-width: 950px){
+
+    body{
+    background-size: 155%;
+    }
+
+}
+
+@media (max-width: 600px){
+
+    body{
+    background-size: 250%;
+    background-position-x: right;
+    }
+
+}

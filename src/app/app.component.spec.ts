@@ -1,10 +1,9 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-   
   beforeEach(async () => {
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
@@ -23,17 +22,16 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('nforms');
   });
 
-  // it('should render title in a h2 tag', () => {
+  // it(`should have as test 'batata'`, () => {
   //   const fixture = TestBed.createComponent(AppComponent);
-  //   fixture.detectChanges();
-  //   const compiled = fixture.debugElement.nativeElement;
-  //   expect(compiled.querySelector('h2').textContent).toContain('Channels');
+  //   const app = fixture.componentInstance;
+  //   expect(app.teste).toEqual('batata');
   // });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('nforms app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('testing app is running!');
   });
 });

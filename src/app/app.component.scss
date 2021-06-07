@@ -135,6 +135,10 @@ nav{
   flex-wrap: nowrap;
 }
 
+.channels>img{
+  display: none;
+}
+
 h2{
   margin: 0px;
   padding-top: 15px;
@@ -285,4 +289,109 @@ h5{
   font-size: 20px;
   color:rgb(232, 244, 254);
   margin: 0px;
+}
+
+
+
+
+@media (max-width: 950px){
+
+  main {
+    flex-direction: column-reverse!important;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .channels{
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 2vw;
+    top: 35px;
+  }
+
+  .channels>img{
+    display: flex;
+    justify-self: center;
+  }
+
+  .channels>h2{
+    display: none;
+  }
+
+  .navbar-profiles-item-wrap {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(30, 150, 250);
+    padding: 20px 0px 20px 0px;
+    z-index: 99;
+    border-radius: 0px 0px 70px 70px;
+  }
+
+  .profile-thumbnail-avatar{
+    margin: 10px;
+  }
+
+  .collapse{
+    visibility: hidden;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.4s ease-out;
+    z-index: 100;
+    width: 80px;
+    height: 80px;
+  }
+
+  .line-1,
+  .line-2,
+  .line-3 {
+    width: 50px;
+    height: 10px;
+    background-color: rgb(232, 244, 254);
+    margin: 3px 0px;
+    transition: 0.4s ease-out;
+    z-index: 100;
+  }
+
+  .change-menu .line-1 {
+    transform: rotate(-45deg) translate(3px, -2px);
+    position: absolute;
+  }
+
+  .change-menu .line-2 {
+    opacity: 0;
+  }
+
+  .change-menu .line-3 {
+    transform: rotate(45deg) translate(-6px, -7px);
+  }
+
+  #scheduleTable{
+    margin-top: 15px;
+  }
+
+}
+
+@media (max-width: 600px){
+
+  // main{
+  //   background-color: chartreuse;
+  // }
+
+
+  footer{
+    height: 15vw;
+    border-radius: 12vw 12vw 0px 0px;
+  }
+
+  h5{
+    font-size: 4.7vw;
+  }
+
 }

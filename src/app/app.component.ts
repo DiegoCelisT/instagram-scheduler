@@ -28,6 +28,13 @@ export class AppComponent implements OnInit {
   public imageName:string
   public startDate = new Date()
 
+
+
+
+
+
+
+  // public teste = "batata"
   
   public constructor(private http: HttpClient) {
     this.form = new FormBuilder().group({
@@ -104,40 +111,8 @@ export class AppComponent implements OnInit {
     this.form.patchValue({ date: $event.target.value });
   }
 
-  public send(){
-    this.form.patchValue({ status: "sent" });
-    if (!this.form.valid) return; // TODO: give feedback
-    this.http
-      .post('api/schedules', this.form.value, { responseType: 'json' })
-      .subscribe((data) => {
-        // this.form.reset(); //retiro isso para evitar que se atualize o formulario, pois ao resetar criava conflitos (empty form)
-        this.New_imgUrl = "" //Para resetar a imagem preview
-        this.submit = false //Ocultar o botão de submit
-        this.files = [];
-        this.http.get('api/schedules').subscribe((scheduleResponse: any) => {
-          this.schedulePeriod = {
-            start_date: scheduleResponse.start_date,
-            end_date: scheduleResponse.end_date,
-          };
-
-          this.schedules = scheduleResponse.data;
-   
-          //Para manter a ordem por data:
-          this.schedules.sort(function(a, b) {
-            if (a.date > b.date) {
-              return 1;
-            }
-            if (a.date < b.date) {
-              return -1;
-            }
-            return 0;
-          });
-        });
-      });
-  }
-
-  public schedule() {
-    this.form.patchValue({ status: "waiting" });
+  public schedule(statusInput) {
+    this.form.patchValue({ status: statusInput });
     if (!this.form.valid) return; // TODO: give feedback
     this.http
       .post('api/schedules', this.form.value, { responseType: 'json' })
@@ -184,6 +159,14 @@ export class AppComponent implements OnInit {
   public changeTab($event) {
     this.form.patchValue({ type: $event.index === 0 ? 'feed' : 'story' });
   }
+
+  public isCollapse = true;   
+  toggleState() {
+      let foo = this.isCollapse;
+      this.isCollapse = foo === true ? false : true;
+      document.getElementById("menu").classList.toggle("change-menu");
+  }
+  
 
 }
 
