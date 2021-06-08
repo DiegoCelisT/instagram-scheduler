@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutGap="40px">
   
   <header class="page-header" fxLayout="row">
-    
+
     <section>
       <div>
         <figure class="profile-thumbnail">
@@ -30,7 +30,7 @@
     <section class="channels">
       <h2>Channels</h2>
 
-      <div class="menu" id="menu" (click)="toggleState()">
+      <div class="menu" id="menu" (click)="toggleState()" (clickOutside)="onClickedOutside()">
         <div class="line-1"></div>
         <div class="line-2"></div>
         <div class="line-3"></div>
@@ -153,7 +153,7 @@
         <div class="form-group row" id="calendar">
           <label for="example-date-input">Choose date</label>
           <div class="col-10">
-            <input class="form-control" type="date" (change)="dateInput($event)" value="{{startDate | date:'yyyy-MM-dd'}}" id="date-input">
+            <input class="form-control" type="date" (change)="dateInput($event)" min="{{startDate | date:'yyyy-MM-dd'}}" value="{{startDate | date:'yyyy-MM-dd'}}" id="date-input">
           </div>
         </div>
         <div id="buttons">

@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +29,7 @@ import { MatTableModule } from '@angular/material/table';
     MatTabsModule,
     MatListModule,
     MatTableModule,
+    ClickOutsideModule
   ],
   providers: [],
   bootstrap: [AppComponent],

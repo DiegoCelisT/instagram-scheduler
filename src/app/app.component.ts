@@ -30,10 +30,6 @@ export class AppComponent implements OnInit {
 
 
 
-
-
-
-
   // public teste = "batata"
   
   public constructor(private http: HttpClient) {
@@ -97,7 +93,6 @@ export class AppComponent implements OnInit {
                 this.New_imgUrl = reader.result; //Para previsualizar
                 this.submit = true // Mostrar botão de submit
                 this.imageName = this.form.value.image.name
-                // console.log (this.form.value.image.name)
               };
             };
           });
@@ -160,13 +155,24 @@ export class AppComponent implements OnInit {
     this.form.patchValue({ type: $event.index === 0 ? 'feed' : 'story' });
   }
 
-  public isCollapse = true;   
+
+  // Funções para controlar o comportamento do menu:
+  
+  public isCollapse = true;  
+  
   toggleState() {
       let foo = this.isCollapse;
-      this.isCollapse = foo === true ? false : true;
-      document.getElementById("menu").classList.toggle("change-menu");
+      this.isCollapse = foo === true ? false : true; 
+      document.getElementById("menu").classList.toggle("change-menu");      
   }
   
+  onClickedOutside() {
+    let foo = this.isCollapse;
+    if (foo === false){
+      this.isCollapse = foo === false ? true : false;
+      document.getElementById("menu").classList.toggle("change-menu");
+    }
+  }
 
 }
 
