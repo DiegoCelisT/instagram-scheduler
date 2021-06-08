@@ -7,7 +7,7 @@ import { NgxFileDropModule } from 'ngx-file-drop';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AppComponent } from './app.component';
-import { ScheduleAPIService } from './schedule-api.service';
+import { ScheduleAPIService } from './services/schedule-api.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatTabsModule } from '@angular/material/tabs';

@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { summaryFileName } from '@angular/compiler/src/aot/util';
 import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
@@ -28,9 +29,6 @@ export class AppComponent implements OnInit {
   public imageName:string
   public startDate = new Date()
 
-
-
-  // public teste = "batata"
   
   public constructor(private http: HttpClient) {
     this.form = new FormBuilder().group({
@@ -44,6 +42,7 @@ export class AppComponent implements OnInit {
   }
 
   public ngOnInit() {
+
     this.form.patchValue({ type: 'feed' });
     this.http.get('api/channels').subscribe((channels) => {
       this.selectedChannel = channels[0];
@@ -173,6 +172,12 @@ export class AppComponent implements OnInit {
       document.getElementById("menu").classList.toggle("change-menu");
     }
   }
+
+  //Just For unit test
+  // sum(a,b){
+  //   let result = a+b
+  //   return (result)
+  // }
 
 }
 
