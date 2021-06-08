@@ -26,3 +26,9 @@ Ao longo do desafio usei diferentes ferramentas, recursos e habilidades, obtendo
     + Possibilidade de cancelar, agendar em uma data futura, ou enviar diretamente a imagem.
     + Somente podem ser carregados arquivos com formato de imagem (jpg, png, jpeg) e apenas um arquivo por vez; 
     + Não podem fazer-se agendamentos em datas anteriores ao dia atual.
+
+* Host em gh-pages para visualização rápida:
+
+https://diegocelist.github.io/postgrain-ng-challenge/
+
+Muito obrigado!
