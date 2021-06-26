@@ -35,12 +35,12 @@ describe('AppComponent', () => {
     expect(title).toEqual('nforms');
   });
 
-  it('should have <h5> with "Postgrain challenge by DiegoCelisT"', () => {
+  it('should have <h5> with "Powered by DiegoCelisT"', () => {
     const bannerElement: HTMLElement = fixture.nativeElement;
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.debugElement.componentInstance;
     const h5 = bannerElement.querySelector('h5')!;
-    expect(h5.textContent).toEqual('Postgrain challenge by DiegoCelisT');
+    expect(h5.textContent).toEqual('Powered by DiegoCelisT');
   });
 
   it('should have figcaption with className "profile-thumbnail-label"', () => {

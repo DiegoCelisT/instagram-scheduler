@@ -8,7 +8,7 @@ export const schedules = {
       created_at: '2021-03-30T16:41:14.000000Z',
       status: 'waiting',
       now: false,
-      date: '2021-06-06T14:40:00+0000',
+      date: '2021-06-26T14:40:00+0000',
       caption: 'A nice post',
       ig_code: null,
       is_history: false,
@@ -23,14 +23,45 @@ export const schedules = {
         filename: '9dbfcf76d9e30edbae8faef13f2ac700236ae25e.jpg',
         is_album: false,
         url:
-          'https://media.postgrain.com/uploads/images/2021/03/30/46519/9dbfcf76d9e30edbae8faef13f2ac700236ae25e.jpg',
+          'https://i.postimg.cc/CMH91rWx/Anillo-Unico.jpg',
         type: null,
       },
       channel: {
         id: 533269,
-        username: 'frodobolseirope',
+        username: 'frodoBaggins',
         profile_pic:
           'https://scontent-lhr8-1.cdninstagram.com/v/t51.2885-19/s150x150/82155853_495819618006168_2122337653864005632_n.jpg?tp=1&_nc_ht=scontent-lhr8-1.cdninstagram.com&_nc_ohc=a825I9qCm68AX_rao5-&ccb=7-4&oh=7fc2bb2204e3d74e41dad4bb7afb4a76&oe=608C68B9&_nc_sid=a9513d',
+      },
+      socials: [],
+    },
+    {
+      id: 62513412,
+      created_at: '2021-05-30T16:41:14.000000Z',
+      status: 'sent',
+      now: false,
+      date: '2021-06-24T14:40:00+0000',
+      caption: 'A nice post',
+      ig_code: null,
+      is_history: false,
+      is_album: false,
+      is_igtv: false,
+      is_reels: false,
+      ig_image_url: null,
+      type: 'feed',
+      media_type: 'photo',
+      image: {
+        id: 126368940,
+        filename: '9dbfcf76d9e30edbae8faef13f2ac700236ae25e.jpg',
+        is_album: false,
+        url:
+          'https://i.postimg.cc/3N49QB0m/P1060060.jpg',
+        type: null,
+      },
+      channel: {
+        id: 533269,
+        username: 'gandalfsertanejo',
+        profile_pic:
+          'https://i.postimg.cc/GmNRmTc9/50790055-395297557698545-3563850225976082432-n.jpg',
       },
       socials: [],
     },
@@ -55,14 +86,46 @@ export const schedules = {
         filename: 'e7a166edf8661a109b44c736fdb8c8b8fa098732.jpg',
         is_album: null,
         url:
-          'https://media.postgrain.com/uploads/images/2021/03/18/46519/e7a166edf8661a109b44c736fdb8c8b8fa098732.jpg',
+          'https://i.postimg.cc/NMPbnVFQ/videogame.jpg',
         type: null,
       },
       channel: {
         id: 533269,
-        username: 'frodobolseirope',
+        username: 'lifelinebregosa',
         profile_pic:
-          'https://scontent-lhr8-1.cdninstagram.com/v/t51.2885-19/s150x150/82155853_495819618006168_2122337653864005632_n.jpg?tp=1&_nc_ht=scontent-lhr8-1.cdninstagram.com&_nc_ohc=a825I9qCm68AX_rao5-&ccb=7-4&oh=7fc2bb2204e3d74e41dad4bb7afb4a76&oe=608C68B9&_nc_sid=a9513d',
+          'https://i.postimg.cc/RVg92by7/118231682-935421876952376-3673832853711561041-n.jpg',
+      },
+      socials: [],
+    },
+    {
+      id: 62127795,
+      created_at: '2021-03-18T13:50:07.000000Z',
+      status: 'sent',
+      now: true,
+      date: '2021-06-04T14:50:17+0000',
+      caption: null,
+      ig_code: 'CMj_gq0HT1-',
+      is_history: true,
+      is_album: false,
+      is_igtv: false,
+      is_reels: false,
+      ig_image_url:
+        'https://instagram.fgig4-1.fna.fbcdn.net/v/t51.2885-15/e35/161402654_480555116275064_3989801771446602528_n.jpg?se=7&tp=1&_nc_ht=instagram.fgig4-1.fna.fbcdn.net&_nc_cat=108&_nc_ohc=EI3YOERVO20AX_pSn4L&ccb=7-4&oh=1cc310cfdaf99a2eb29ffb036f478b17&oe=6055E974&ig_cache_key=MjUzMjE0NjczNzQzNzI5Mzk1MA%3D%3D.2-ccb7-4',
+      type: 'story',
+      media_type: 'photo',
+      image: {
+        id: 125446429,
+        filename: 'e7a166edf8661a109b44c736fdb8c8b8fa098732.jpg',
+        is_album: null,
+        url:
+          'https://i.postimg.cc/BvpmTtGL/D-NQ-NP-981543-MLB44762015807-012021-W.jpg',
+        type: null,
+      },
+      channel: {
+        id: 533269,
+        username: 'mytshirtstore77',
+        profile_pic:
+          'https://i.postimg.cc/ZKb47h7Y/57160296-286873902234976-7422085219886301184-n.jpg',
       },
       socials: [],
     },
@@ -80,19 +143,19 @@ export const schedules = {
       is_reels: false,
       ig_image_url:
         'https://instagram.fmcz4-1.fna.fbcdn.net/v/t51.2885-15/e35/p360x360/160901975_778092973141985_5239028039275833209_n.jpg?tp=1&_nc_ht=instagram.fmcz4-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=13HdrS7zcvsAX-TIsFX&oh=6f962fb7a1a1a6336863adcb63d4dd07&oe=6053AFCA&ig_cache_key=MjUzMDk1NzEzNjg2NTc3NDc5Mw%3D%3D.2',
-      type: 'story',
+      type: 'feed',
       media_type: 'photo',
       image: {
         id: 125306272,
         filename: '2be4835cf549b0d3bfb0e18bb270255db86ea8a5_00001.jpg',
         is_album: false,
         url:
-          'https://media.postgrain.com/uploads/images/2021/03/16/46519/2be4835cf549b0d3bfb0e18bb270255db86ea8a5_00001.jpg',
+          'https://i.postimg.cc/sX11XZ2V/iman-deluxe-pony-pisador-el-senor-de-los-anillos.jpg',
         type: null,
       },
       channel: {
         id: 533269,
-        username: 'frodobolseirope',
+        username: 'frodoBaggins',
         profile_pic:
           'https://scontent-lhr8-1.cdninstagram.com/v/t51.2885-19/s150x150/82155853_495819618006168_2122337653864005632_n.jpg?tp=1&_nc_ht=scontent-lhr8-1.cdninstagram.com&_nc_ohc=a825I9qCm68AX_rao5-&ccb=7-4&oh=7fc2bb2204e3d74e41dad4bb7afb4a76&oe=608C68B9&_nc_sid=a9513d',
       },
@@ -119,12 +182,12 @@ export const schedules = {
         filename: '077aacb040a7506e3216676f0743993312c0ec7c.jpg',
         is_album: null,
         url:
-          'https://media.postgrain.com/uploads/images/2021/03/16/46519/077aacb040a7506e3216676f0743993312c0ec7c.jpg',
+          'https://i.postimg.cc/nz5rQcsq/prancing-pony.jpg',
         type: null,
       },
       channel: {
         id: 533269,
-        username: 'frodobolseirope',
+        username: 'frodoBaggins',
         profile_pic:
           'https://scontent-lhr8-1.cdninstagram.com/v/t51.2885-19/s150x150/82155853_495819618006168_2122337653864005632_n.jpg?tp=1&_nc_ht=scontent-lhr8-1.cdninstagram.com&_nc_ohc=a825I9qCm68AX_rao5-&ccb=7-4&oh=7fc2bb2204e3d74e41dad4bb7afb4a76&oe=608C68B9&_nc_sid=a9513d',
       },
@@ -138,8 +201,8 @@ export const channels = [
     id: 533269,
     user: {
       pk: 28449666129,
-      username: 'frodobolseirope',
-      full_name: 'frodo bolseiro',
+      username: 'frodoBaggins',
+      full_name: 'Frodo Baggins',
       is_private: false,
       profile_pic_url:
         'https://i.postimg.cc/MpXxwmJh/82155853-495819618006168-2122337653864005632-n.jpg',
@@ -541,11 +604,11 @@ export const channels = [
       following_count: 133,
       following_tag_count: 0,
       biography:
-        'Camisetas personalizadas! 👕\n👉 Use #mytshirtstore para aparecer em nosso perfil.\nPerfil de teste do @postgrain.',
+        'Camisetas personalizadas!',
       can_link_entities_in_bio: true,
       biography_with_entities: {
         raw_text:
-          'Camisetas personalizadas! 👕\n👉 Use #mytshirtstore para aparecer em nosso perfil.\nPerfil de teste do @postgrain.',
+          'Camisetas personalizadas!',
         entities: [
           {
             hashtag: {

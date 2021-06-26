@@ -69,7 +69,6 @@ export const scheduleFactory = (data) => ({
     filename: data.image.name,
     is_album: false,
     url: data.NewURL, //Trocado para receber imagens novas e não só a mesma que estava vindo por default
-      // 'https://media.postgrain.com/uploads/images/2021/03/30/46519/9dbfcf76d9e30edbae8faef13f2ac700236ae25e.jpg',
     type: null,
   },
   channel: {
