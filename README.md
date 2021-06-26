@@ -1,6 +1,4 @@
-# Relatório de desafio
-
-Ao longo do desafio usei diferentes ferramentas, recursos e habilidades, obtendo uma série de conquistas, em um processo que envolveu as seguintes características:
+# Prática de diversos conceitos de programação web:
 
 * Leitura e interpretação de códigos legados.
 
@@ -29,6 +27,4 @@ Ao longo do desafio usei diferentes ferramentas, recursos e habilidades, obtendo
 
 * Host em gh-pages para visualização rápida:
 
-https://diegocelist.github.io/postgrain-ng-challenge/
-
-Muito obrigado!
+https://diegocelist.github.io/instagram-scheduler/
